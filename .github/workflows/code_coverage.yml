@@ -9,7 +9,7 @@ permissions:
 
 jobs:
   Code-Coverage:
-	name: "Code Quality"
+	name: Code Quality
     runs-on: ubuntu-latest
     steps:
     - uses: actions/setup-node@v3
