@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Sample Calculator app</title>
+		<style>
+			body > *:not(script) {
+				display: block;
+				margin: 5pt;
+			}
+
+			.success {
+				color: green;
+			}
+
+			.error {
+				color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="text" id="a" placeholder="First number">
+		<input type="text" id="b" placeholder="Second number">
+		<select id="operator">
+			<option value="add">Addition</option>
+			<option value="subtract">Subtraction</option>
+			<option value="multiply">Multiplication</option>
+			<option value="divide">Division</option>
+		</select>
+		<button id="calc">Calculate</button>
+		<div id="message"></div>
+		<script>
+			let a = document.querySelector("#a");
+			let b = document.querySelector("#b");
+			let operator = document.querySelector("#operator");
+			let message = document.querySelector("#message");
+			document.querySelector("#calc").addEventListener("click", async function () {
+				message.removeAttribute("style");
+				let res = await (await fetch(`/calculate?a=${a.value}&b=${b.value}&operator=${operator.value}`)).json();
+	
+				message.setAttribute("class", res.success ? "success" : "error");
+				message.innerText = res.message;
+			});
+		</script>
+	</body>
+</html>

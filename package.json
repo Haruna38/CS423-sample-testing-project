@@ -1,0 +1,14 @@
+{
+  "name": "cs423-sample-testing-project",
+  "version": "1.0.0",
+  "description": "Sample project for software testing",
+  "main": "index.js",
+  "scripts": {
+    "test": "nyc ./test.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
+}
