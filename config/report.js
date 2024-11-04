@@ -12,7 +12,9 @@ const coverage = readFileSync("./tmp/coverage.txt", "utf-8")
 	.replace("Stmts", "Statements")
 	.replace("Funcs", "Functions");
 
-writeFileSync("./tmp/report.json", JSON.stringify({ body: mocha_report + coverage }), "utf-8");
+const finalContent = mocha_report + coverage;
+writeFileSync("./tmp/report.json", JSON.stringify({ body: finalContent }), "utf-8");
+writeFileSync("./tmp/report.md", finalContent, "utf-8");
 
 console.log("Exit code:", status);
 

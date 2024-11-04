@@ -17,15 +17,8 @@ jobs:
     - name: Initialization
       run: npm run initialize
     - name: Run tests
-      run: mkdir tmp && npm run test-ci
+      run: npm run test-ci
     - name: Comment on Pull Request
-      uses: actions/github-script@v7
+      uses: thollander/actions-comment-pull-request@v3
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        script: |
-          github.rest.issues.createComment({
-            issue_number: context.issue.number,
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            body: require("./tmp/report.json").body
-          })
+        file-path: ./tmp/report.md

@@ -1,4 +1,7 @@
-on: [push]
+on:
+  push:
+    branches:
+      - main
 name: Continuous Integration
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -17,7 +20,7 @@ jobs:
     - name: Initialization
       run: npm run initialize
     - name: Run tests
-      run: mkdir tmp && npm run test-ci
+      run: npm run test-ci
     - name: Add comment on test result
       env:
         PAT: ${{ secrets.PAT }}
