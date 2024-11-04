@@ -16,12 +16,8 @@ jobs:
     - name: Run tests
       run: mkdir tmp && npm run test-ci
     - name: Add comment on test result
-      run: |
-        cat tmp/report.json | \
-        jq -c | \
-        curl -sL  -X POST -d @- \
-          -H "Content-Type: application/json" \
-          -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-          "https://api.github.com/repos/$GITHUB_REPOSITORY/commits/$GITHUB_SHA/comments"
+      uses: peter-evans/commit-comment@v3.0.0
+      with:
+        body-path: './tmp/report.md'
     - name: Finalize check
       run: exit ${{ env.CODE_COVERAGE_FAILURE_STATUS }}
