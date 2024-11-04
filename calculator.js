@@ -16,23 +16,23 @@ const calculate = function (a, b, operator) {
 	a = validate(a, "First number");
 	b = validate(b, "Second number");
 	let result;
-	// switch (operator) {
-	// 	case "add":
-	// 		result = a + b;
-	// 		break;
-	// 	case "subtract":
-	// 		result = a - b;
-	// 		break;
-	// 	case "multiply":
-	// 		result = a * b;
-	// 		break;
-	// 	case "divide":
-	// 		if (b === 0) throw "Division by zero detected!";
-	// 		result = a / b;
-	// 		break;
-	// 	default:
-	// 		throw "Invalid operator.";
-	// }
+	switch (operator) {
+		case "add":
+			result = a + b;
+			break;
+		case "subtract":
+			result = a - b;
+			break;
+		case "multiply":
+			result = a * b;
+			break;
+		case "divide":
+			if (b === 0) throw "Division by zero detected!";
+			result = a / b;
+			break;
+		default:
+			throw "Invalid operator.";
+	}
 
 	if (result === Infinity) throw "Result is too large!";
 	return result;
