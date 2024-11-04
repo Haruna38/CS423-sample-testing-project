@@ -30,4 +30,4 @@ jobs:
         https://api.github.com/repos/$GITHUB_REPOSITORY/commits/$GITHUB_SHA/comments \
         --data-binary "@tmp/report.json"
     - name: Finalize check
-      run: exit ${{ env.CODE_COVERAGE_FAILURE_STATUS }}
+      run: exit $CODE_COVERAGE_FAILURE_STATUS

@@ -16,4 +16,4 @@ writeFileSync("./tmp/report.json", JSON.stringify({ body: mocha_report + coverag
 
 console.log("Exit code:", status);
 
-spawnSync(`echo "CODE_COVERAGE_FAILURE_STATUS=${status}" >> $GITHUB_ENV`);
+spawnSync(`echo "CODE_COVERAGE_FAILURE_STATUS=${status}" >> $GITHUB_ENV`, { shell: true, encoding: "utf-8"});
