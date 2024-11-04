@@ -1,7 +1,7 @@
 import { spawnSync } from "node:child_process";
 import { readFileSync, writeFileSync } from "node:fs";
 
-const result = spawnSync("npm run test-ci-raw");
+const result = spawnSync("npm", ["run", "test-ci-raw"], { shell: true, encoding: "utf-8" });
 
 const mocha_report = readFileSync("./tmp/mocha_output.md", "utf-8");
 const coverage = readFileSync("./tmp/coverage.txt", "utf-8")

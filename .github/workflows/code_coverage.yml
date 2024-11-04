@@ -14,7 +14,7 @@ jobs:
     - name: Initialization
       run: npm run initialize
     - name: Run tests
-      run: npm run test-ci
+      run: mkdir tmp && npm run test-ci
     - name: Add comment on test result
       run: |
         jq -nc '$(cat tmp/report.json)' | \
