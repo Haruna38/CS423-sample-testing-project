@@ -16,8 +16,8 @@ jobs:
     - name: Run tests
       run: mkdir tmp && npm run test-ci
     - name: Add comment on test result
-      run: |
-        jq -nc '$(cat tmp/report.json)' | \
+      run: cat tmp/report.json | \
+        jq -c | \
         curl -sL  -X POST -d @- \
           -H "Content-Type: application/json" \
           -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
