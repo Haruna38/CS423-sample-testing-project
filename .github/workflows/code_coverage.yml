@@ -11,7 +11,7 @@ jobs:
     steps:
     - uses: actions/setup-node@v3
     - name: Initialization
-      run: npm run initialize
+      run: npm run init-ci
     - name: Run tests
       run: npm run test-ci
     - name: Add comment on test result
