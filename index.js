@@ -1,6 +1,10 @@
-const express = require("express");
-const path = require("path");
-const calculate = require("./calculator");
+import express from "express";
+import path from "path";
+import calculate from "./calculator.js";
+import { dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+    
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const app = express();
 

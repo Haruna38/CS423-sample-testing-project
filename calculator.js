@@ -2,15 +2,14 @@ const validate = function (val, message) {
 	// missing input validation
 	if (val == null || val === "") throw `${message} is required.`;
 
-	// non-a-number sanity check
+	// not-a-number sanity check
 	if ("string" !== typeof val && "number" !== typeof val || isNaN(val)) throw `${message} is invalid.`;
 	
-	if ("number" === typeof val) {
-		if (val === Infinity) throw `${message} is too large`;
-		return val;
-	}
+	val = +val;
+	
+	if (val === Infinity) throw `${message} is too large!`;
 
-	return +val;
+	return val;
 }
 
 const calculate = function (a, b, operator) {
@@ -28,14 +27,15 @@ const calculate = function (a, b, operator) {
 			result = a * b;
 			break;
 		case "divide":
+			if (b === 0) throw "Division by zero detected!";
 			result = a / b;
 			break;
 		default:
-			throw "Invalid operator";
+			throw "Invalid operator.";
 	}
 
-	if (result === Infinity) throw "Result is too large";
+	if (result === Infinity) throw "Result is too large!";
 	return result;
 }
 
-module.exports = calculate;
+export default calculate;

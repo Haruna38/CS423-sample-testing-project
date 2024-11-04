@@ -4,11 +4,21 @@
   "description": "Sample project for software testing",
   "main": "index.js",
   "scripts": {
-    "test": "nyc ./test.js"
+    "test": "NODE_ENV=test ./node_modules/.bin/c8 ./node_modules/.bin/mocha tests/*.js --reporter spec",
+    "demonstrate": "cd demonstration && ../node_modules/.bin/nyc node",
+    "initialize": "NODE_ENV=test npm install"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.21.1"
+    "express": "^4.21.1",
+    "mocha": "^10.8.2",
+    "sinon": "^19.0.2"
+  },
+  "type": "module",
+  "devDependencies": {
+    "c8": "^10.1.2",
+    "chai": "^5.1.2",
+    "nyc": "^17.1.0"
   }
 }

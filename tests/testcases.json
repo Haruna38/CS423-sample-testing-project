@@ -1,0 +1,176 @@
+[
+	{
+		"name": "Smoke check",
+		"data": {
+			"a": 11,
+			"b": 2
+		},
+		"testcases": [
+			{
+				"name": "Addition",
+				"data": {
+					"operator": "add"
+				},
+				"expects": {
+					"error": false,
+					"result": 13
+				}
+			},
+			{
+				"name": "Subtraction",
+				"data": {
+					"operator": "subtract"
+				},
+				"expects": {
+					"error": false,
+					"result": 9
+				}
+			},
+			{
+				"name": "Multiplication",
+				"data": {
+					"operator": "multiply"
+				},
+				"expects": {
+					"error": false,
+					"result": 22
+				}
+			},
+			{
+				"name": "Division",
+				"data": {
+					"operator": "divide"
+				},
+				"expects": {
+					"error": false,
+					"result": 5.5
+				}
+			}
+		]
+	},
+	{
+		"name": "Input validation",
+		"data": {
+			"operator": "add"
+		},
+		"testcases": [
+			{
+				"name": "Invalid operator",
+				"data": {
+					"a": 1,
+					"b": 2,
+					"operator": "Square root"
+				},
+				"expects": {
+					"error": true,
+					"result": "Invalid operator."
+				}
+			},
+			{
+				"name": "First number",
+				"data": {
+					"b": 2
+				},
+				"testcases": [
+					{
+						"name": "No value",
+						"data": {
+							"a": null
+						},
+						"expects": {
+							"error": true,
+							"result": "First number is required."
+						}
+					},
+					{
+						"name": "Invalid input",
+						"data": {
+							"a": "non-number"
+						},
+						"expects": {
+							"error": true,
+							"result": "First number is invalid."
+						}
+					},
+					{
+						"name": "Overflown",
+						"data": {
+							"a": "1e+900"
+						},
+						"expects": {
+							"error": true,
+							"result": "First number is too large!"
+						}
+					}
+				]
+			},
+			{
+				"name": "Second number",
+				"data": {
+					"a": 2
+				},
+				"testcases": [
+					{
+						"name": "No value",
+						"data": {
+							"b": null
+						},
+						"expects": {
+							"error": true,
+							"result": "Second number is required."
+						}
+					},
+					{
+						"name": "Invalid input",
+						"data": {
+							"b": "non-number"
+						},
+						"expects": {
+							"error": true,
+							"result": "Second number is invalid."
+						}
+					},
+					{
+						"name": "Overflown",
+						"data": {
+							"b": "1e+900"
+						},
+						"expects": {
+							"error": true,
+							"result": "Second number is too large!"
+						}
+					}
+				]
+			},
+			{
+				"name": "Division by zero",
+				"data": {
+					"a": 1,
+					"b": 0,
+					"operator": "divide"
+				},
+				"expects": {
+					"error": true,
+					"result": "Division by zero detected!"
+				}
+			}
+		]
+	},
+	{
+		"name": "Result validation",
+		"testcases": [
+			{
+				"name": "Result too large",
+				"data": {
+					"a": 1e200,
+					"b": 1e200,
+					"operator": "multiply"
+				},
+				"expects": {
+					"error": true,
+					"result": "Result is too large!"
+				}
+			}
+		]
+	}
+]
