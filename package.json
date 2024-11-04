@@ -4,7 +4,10 @@
   "description": "Sample project for software testing",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=test ./node_modules/.bin/c8 ./node_modules/.bin/mocha tests/*.js --reporter spec",
+    "test": "NODE_ENV=test ./node_modules/.bin/c8 ./node_modules/.bin/mocha tests/*.js",
+    "mocha": "NODE_ENV=test ./node_modules/.bin/mocha --config=./config/.mocharc.json tests/*.js > tmp/mocha_output.md",
+    "test-ci-raw": "NODE_ENV=test ./node_modules/.bin/c8 --config ./config/.nycrc.json npm run --silent mocha > tmp/coverage.txt",
+    "test-ci": "node ./config/report.js",
     "demonstrate": "cd demonstration && ../node_modules/.bin/nyc node",
     "initialize": "NODE_ENV=test npm install"
   },

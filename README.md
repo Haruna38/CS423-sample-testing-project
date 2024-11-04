@@ -28,7 +28,7 @@ Will show the overall unit test results and coverage of the calculator backend.
 Frontend testing is not added yet, as this is only a basic example.
 
 Example output:
-![alt text](images/local_test_output.png)
+![Testing output](images/local_test_output.png)
 
 ## CI/CD through GitHub push and Pull Request (PR)
 
