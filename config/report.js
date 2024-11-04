@@ -1,7 +1,7 @@
 import { spawnSync } from "node:child_process";
 import { readFileSync, writeFileSync } from "node:fs";
 
-const result = spawnSync("npm", ["run", "test-ci-raw"], { shell: true, encoding: "utf-8" });
+const { status } = spawnSync("npm", ["run", "test-ci-raw"], { shell: true, encoding: "utf-8" });
 
 const mocha_report = readFileSync("./tmp/mocha_output.md", "utf-8");
 const coverage = readFileSync("./tmp/coverage.txt", "utf-8")
@@ -14,6 +14,6 @@ const coverage = readFileSync("./tmp/coverage.txt", "utf-8")
 
 writeFileSync("./tmp/report.json", JSON.stringify({ body: mocha_report + coverage }), "utf-8");
 
-let failed = result.error ? 1 : 0;
+console.log("Exit code:", status);
 
-spawnSync(`echo "CODE_COVERAGE_FAILURE_STATUS=${failed}" >> $GITHUB_ENV`);
+spawnSync(`echo "CODE_COVERAGE_FAILURE_STATUS=${status}" >> $GITHUB_ENV`);
