@@ -9,20 +9,20 @@ permissions:
 
 jobs:
   Code-Coverage:
-	name: Code Quality
+    name: Code Quality
     runs-on: ubuntu-latest
     steps:
     - uses: actions/setup-node@v3
-	- name: Initialization
+    - name: Initialization
       run: npm run initialize
     - name: Run tests
       run: npm run test-ci
     - name: Add comment on test result
-	  run: |
-	    jq -nc '$(cat tmp/report.json)' | \
-	    curl -sL  -X POST -d @- \
-		  -H "Content-Type: application/json" \
-		  -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-		  "https://api.github.com/repos/$GITHUB_REPOSITORY/commits/$GITHUB_SHA/comments"
-	- name: Finalize check
-	  run: exit ${{ env.CODE_COVERAGE_FAILURE_STATUS }}
+      run: |
+        jq -nc '$(cat tmp/report.json)' | \
+        curl -sL  -X POST -d @- \
+          -H "Content-Type: application/json" \
+          -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+          "https://api.github.com/repos/$GITHUB_REPOSITORY/commits/$GITHUB_SHA/comments"
+    - name: Finalize check
+      run: exit ${{ env.CODE_COVERAGE_FAILURE_STATUS }}
