@@ -1,7 +1,4 @@
-on:
-  push:
-    branches:
-      - main
+on: [push]
 name: Continuous Integration
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -22,15 +19,9 @@ jobs:
     - name: Run tests
       run: npm run test-ci
     - name: Add comment on test result
-      env:
-        PAT: ${{ secrets.PAT }}
-      run: |
-        curl -L \
-        -X POST \
-        -H "Accept: application/vnd.github+json" \
-        -H "Authorization: Bearer $PAT" \
-        -H "X-GitHub-Api-Version: 2022-11-28" \
-        https://api.github.com/repos/$GITHUB_REPOSITORY/commits/$GITHUB_SHA/comments \
-        --data-binary "@tmp/report.json"
+      uses: peter-evans/commit-comment@v3.0.0
+      with:
+        token: ${{ secrets.PAT }}
+        body-path: './tmp/report.md'
     - name: Finalize check
       run: exit $CODE_COVERAGE_FAILURE_STATUS

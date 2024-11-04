@@ -13,7 +13,6 @@ const coverage = readFileSync("./tmp/coverage.txt", "utf-8")
 	.replace("Funcs", "Functions");
 
 const finalContent = mocha_report + coverage;
-writeFileSync("./tmp/report.json", JSON.stringify({ body: finalContent }), "utf-8");
 writeFileSync("./tmp/report.md", finalContent, "utf-8");
 
 console.log("Exit code:", status);
