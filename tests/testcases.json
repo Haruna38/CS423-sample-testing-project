@@ -83,9 +83,69 @@
 						}
 					},
 					{
-						"name": "Invalid input",
+						"name": "Invalid format",
 						"data": {
 							"a": "non-number"
+						},
+						"expects": {
+							"error": true,
+							"result": "First number has invalid format."
+						}
+					},
+					{
+						"name": "Hex format",
+						"data": {
+							"a": "0x308"
+						},
+						"expects": {
+							"error": true,
+							"result": "First number has invalid format."
+						}
+					},
+					{
+						"name": "Mixed dots",
+						"data": {
+							"a": "1..2"
+						},
+						"expects": {
+							"error": true,
+							"result": "First number has invalid format."
+						}
+					},
+					{
+						"name": "Multiple signs",
+						"data": {
+							"a": "-+-3"
+						},
+						"expects": {
+							"error": true,
+							"result": "First number has invalid format."
+						}
+					},
+					{
+						"name": "Trailing dot (start)",
+						"data": {
+							"a": ".1"
+						},
+						"expects": {
+							"error": false,
+							"result": 2.1
+						}
+					},
+					{
+						"name": "Trailing dot (end)",
+						"data": {
+							"a": "1."
+						},
+						"expects": {
+							"error": false,
+							"result": 3
+						}
+					},
+					{
+						"name": "Wrong type",
+						"data": {
+							"a": ["non-number"]
 						},
 						"expects": {
 							"error": true,
@@ -95,7 +155,7 @@
 					{
 						"name": "Overflown",
 						"data": {
-							"a": "1e+900"
+							"a": "10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
 						},
 						"expects": {
 							"error": true,
@@ -121,9 +181,69 @@
 						}
 					},
 					{
-						"name": "Invalid input",
+						"name": "Invalid format",
 						"data": {
 							"b": "non-number"
+						},
+						"expects": {
+							"error": true,
+							"result": "Second number has invalid format."
+						}
+					},
+					{
+						"name": "Hex format",
+						"data": {
+							"b": "0x308"
+						},
+						"expects": {
+							"error": true,
+							"result": "Second number has invalid format."
+						}
+					},
+					{
+						"name": "Mixed dots",
+						"data": {
+							"b": "1..2"
+						},
+						"expects": {
+							"error": true,
+							"result": "Second number has invalid format."
+						}
+					},
+					{
+						"name": "Multiple signs",
+						"data": {
+							"b": "-+-3"
+						},
+						"expects": {
+							"error": true,
+							"result": "Second number has invalid format."
+						}
+					},
+					{
+						"name": "Trailing dot (start)",
+						"data": {
+							"b": ".1"
+						},
+						"expects": {
+							"error": false,
+							"result": 2.1
+						}
+					},
+					{
+						"name": "Trailing dot (end)",
+						"data": {
+							"b": "1."
+						},
+						"expects": {
+							"error": false,
+							"result": 3
+						}
+					},
+					{
+						"name": "Wrong type",
+						"data": {
+							"b": ["non-number"]
 						},
 						"expects": {
 							"error": true,
@@ -133,7 +253,7 @@
 					{
 						"name": "Overflown",
 						"data": {
-							"b": "1e+900"
+							"b": "10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
 						},
 						"expects": {
 							"error": true,
@@ -162,8 +282,8 @@
 			{
 				"name": "Result too large",
 				"data": {
-					"a": 1e200,
-					"b": 1e200,
+					"a": "100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+					"b": "100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
 					"operator": "multiply"
 				},
 				"expects": {

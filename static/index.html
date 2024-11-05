@@ -35,9 +35,11 @@
 			let b = document.querySelector("#b");
 			let operator = document.querySelector("#operator");
 			let message = document.querySelector("#message");
+
+			let encode = (v) => encodeURIComponent(v.value)
 			document.querySelector("#calc").addEventListener("click", async function () {
 				message.removeAttribute("style");
-				let res = await (await fetch(`/calculate?a=${a.value}&b=${b.value}&operator=${operator.value}`)).json();
+				let res = await (await fetch(`/calculate?a=${encode(a)}&b=${encode(b)}&operator=${encode(operator)}`)).json();
 	
 				message.setAttribute("class", res.success ? "success" : "error");
 				message.innerText = res.message;

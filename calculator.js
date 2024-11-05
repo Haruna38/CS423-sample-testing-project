@@ -2,10 +2,13 @@ const validate = function (val, message) {
 	// missing input validation
 	if (val == null || val === "") throw `${message} is required.`;
 
-	// not-a-number sanity check
-	if ("string" !== typeof val && "number" !== typeof val || isNaN(val)) throw `${message} is invalid.`;
-	
-	val = +val;
+	// if number is a string, check before converting to number
+	if ("string" === typeof val) {
+		if (!val.match(/^(\+|\-){0,1}\d*(\d\.{0,1}|\.\d)\d*$/)) throw `${message} has invalid format.`;
+		val = +val;
+	}
+
+	if ("number" !== typeof val || isNaN(val)) throw `${message} is invalid.`;
 	
 	if (val === Infinity) throw `${message} is too large!`;
 
