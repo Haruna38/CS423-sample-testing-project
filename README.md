@@ -46,15 +46,15 @@ Test case object example:
 	// it will inherit from parent case
 	// (or null if it has no parents)
 	"data": {
-		"a": 1,
-		"b": 2,
+		"a": "1",
+		"b": "2",
 		"operator": "add"
 	},
 	// what you expect on this test case
 	// this is non-inheritable
 	"expects": {
 		"errror": false, // whether this test is expected to throw error or not
-		"result": 3 // expected result
+		"result": "3" // expected result
 	},
 	"testcases": [
 		// define any sub unit-test for this test case

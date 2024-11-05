@@ -159,7 +159,7 @@
 						},
 						"expects": {
 							"error": true,
-							"result": "First number falls outside the allowed limit (-10^100, 10^100)"
+							"result": "First number falls outside the allowed range (-10^100, 10^100)"
 						}
 					},
 					{
@@ -269,7 +269,7 @@
 						},
 						"expects": {
 							"error": true,
-							"result": "Second number falls outside the allowed limit (-10^100, 10^100)"
+							"result": "Second number falls outside the allowed range (-10^100, 10^100)"
 						}
 					},
 					{
@@ -312,7 +312,7 @@
 				},
 				"expects": {
 					"error": true,
-					"result": "Result falls outside the allowed limit (-10^100, 10^100)"
+					"result": "Result falls outside the allowed range (-10^100, 10^100)"
 				}
 			},
 			{
