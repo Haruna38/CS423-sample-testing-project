@@ -4,7 +4,7 @@ const validate = function (val, message) {
 
 	// if number is a string, check before converting to number
 	if ("string" === typeof val) {
-		if (!val.match(/^(\+|\-){0,1}\d*(\d\.{0,1}|\.\d)\d*$/)) throw `${message} has invalid format.`;
+		// if (!val.match(/^(\+|\-){0,1}\d*(\d\.{0,1}|\.\d)\d*$/)) throw `${message} has invalid format.`;
 		val = +val;
 	}
 
