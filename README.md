@@ -31,9 +31,6 @@ Example output:
 ![Testing output](images/local_test_output.png)
 
 ## CI/CD through GitHub push and Pull Request (PR)
-
-(TODO)
-
 Fork this repository and try to push any changes in that repository to see changes
 
 For PR, you can either do that on your forked repository or this one to see the Code Coverage result. Note that I don't accept PRs.
