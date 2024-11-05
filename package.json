@@ -14,6 +14,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "decimal.js": "^10.4.3",
     "express": "^4.21.1",
     "mocha": "^10.8.2",
     "sinon": "^19.0.2"

@@ -13,9 +13,8 @@ Before you start with this project's unit testing, take a quick look at [Istanbu
 ## Start server
 ```
 $ node .
-App started.
+App started at http://localhost:8000
 ```
-Server is running at `localhost:8000`.
 
 Docker sample for this project is currently unavailable.
 

@@ -1,16 +1,26 @@
+import Decimal from "decimal.js";
+
+const limit = new Decimal("1e100");
+const precision_limit = new Decimal("1e-100");
+const zero = new Decimal("0");
+
 const validate = function (val, message) {
 	// missing input validation
 	if (val == null || val === "") throw `${message} is required.`;
 
-	// if number is a string, check before converting to number
-	if ("string" === typeof val) {
-		if (!val.match(/^(\+|\-){0,1}\d*(\d\.{0,1}|\.\d)\d*$/)) throw `${message} has invalid format.`;
-		val = +val;
-	}
+	// only accept strings
+	if ("string" !== typeof val) throw `${message} is invalid.`;
 
-	if ("number" !== typeof val || isNaN(val)) throw `${message} is invalid.`;
+	// don't accept exponent or other base type
+	if (!val.match(/^(\+|\-){0,1}\d*(\d\.{0,1}|\.\d)\d*$/)) throw `${message} has invalid format.`;
+
+	val = new Decimal(val);
+
+	if (val.isNaN()) throw `${message} has invalid format.`;
 	
-	if (val === Infinity) throw `${message} is too large!`;
+	if (val.gte(limit)) throw `${message} falls outside the allowed range (-10^100, 10^100)`;
+
+	if (val.gt(zero) && val.lte(precision_limit)) return zero;
 
 	return val;
 }
@@ -21,24 +31,27 @@ const calculate = function (a, b, operator) {
 	let result;
 	switch (operator) {
 		case "add":
-			result = a + b;
+			result = a.plus(b);
 			break;
 		case "subtract":
-			result = a - b;
+			result = a.minus(b);
 			break;
 		case "multiply":
-			result = a * b;
+			result = a.times(b);
 			break;
 		case "divide":
-			if (b === 0) throw "Division by zero detected!";
-			result = a / b;
+			if (b.equals(zero)) throw "Division by zero detected!";
+			result = a.dividedBy(b);
 			break;
 		default:
 			throw "Invalid operator.";
 	}
 
-	if (result === Infinity) throw "Result is too large!";
-	return result;
+	if (result.gte(limit)) throw "Result falls outside the allowed range (-10^100, 10^100)";
+
+	if (result.gt(0) && result.lte(precision_limit)) result = zero;
+
+	return result.toFixed();
 }
 
 export default calculate;

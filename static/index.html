@@ -3,11 +3,57 @@
 	<head>
 		<title>Sample Calculator app</title>
 		<style>
-			body > *:not(script) {
+			body {
+				display: flex;
+				padding: 0;
+				overflow: hidden hidden;
+			}
+			
+			body > * {
+				padding: 5pt;
+				margin: 0;
+				height: 100vh;
+				overflow: hidden auto;
+			}
+
+			#calculator {
+				width: 45vw;
+				overflow-x: auto;
+			}
+
+			#calculator * {
+				width: 85%;
 				display: block;
 				margin: 10pt;
-				font-size: 50pt;
 				padding: 15pt;
+				font-size: 45pt;
+			}
+
+			#calculator p {
+				padding: 0;
+				word-break: break-word;
+    			white-space: normal;
+				height: 30%;
+				overflow: hidden scroll;
+			}
+
+			#calc, #operator {
+				cursor: pointer;
+			}
+
+			#ruleset > * {
+				width: 45vw;
+				font-size: 40pt;
+				margin: 0;
+			}
+
+			#ruleset ul {
+				margin-top: 10pt;
+			}
+
+			#ruleset li {
+				font-size: 25pt;
+				padding: 10pt;
 			}
 
 			.success {
@@ -20,16 +66,31 @@
 		</style>
 	</head>
 	<body>
-		<input type="text" id="a" placeholder="First number">
-		<input type="text" id="b" placeholder="Second number">
-		<select id="operator">
-			<option value="add">Addition</option>
-			<option value="subtract">Subtraction</option>
-			<option value="multiply">Multiplication</option>
-			<option value="divide">Division</option>
-		</select>
-		<button id="calc">Calculate</button>
-		<div id="message"></div>
+		<div id="calculator">
+			<input type="text" id="a" placeholder="First number">
+			<input type="text" id="b" placeholder="Second number">
+			<select id="operator">
+				<option value="add">Addition</option>
+				<option value="subtract">Subtraction</option>
+				<option value="multiply">Multiplication</option>
+				<option value="divide">Division</option>
+			</select>
+			<button id="calc">Calculate</button>
+			<p id="message"></p>
+		</div>
+		<div id="ruleset">
+			<b>Calculator rules:</b>
+			<ul>
+				<li>Both numbers are required</li>
+				<li>Input must contain only numbers, dot (.) and signs (+/-)</li>
+				<li>Both numbers and result must be in range (-10^100, 10^100)</li>
+				<li>Trailing dot (e.g 1., .1) is allowed</li>
+				<li>Unary notation (e.g +12) is allowed</li>
+				<li>Exponentation notations (e.g 10^1, 2e-3) are not allowed</li>
+				<li>Precision lost is acceptable outside the (-10^10, 10^10) range</li>
+				<li>Positive value lower than 10^-100 will be converted to zero</li>
+			</ul>
+		</div>
 		<script>
 			let a = document.querySelector("#a");
 			let b = document.querySelector("#b");
