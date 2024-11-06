@@ -52,7 +52,7 @@ class MyReporter {
           `## Unit Tests Summary\n` + 
           `| ✅ Passes | ❌ Failure | 📋 Total |\n` + 
           `| :-: | :-: | :-: |\n` +
-          `| ${passes}<br>(${(passes / all * 100).toFixed(2)}%) | ${failures}<br>(${(failures / all * 100).toFixed(2)}%) | ${all}<br>(100%) |\n` +
+          `| ${passes}<br>(${(passes / all * 100).toFixed(2)}%) | ${failures}<br>(${(failures / all * 100).toFixed(2)}%) | ${all}<br>(100.00%) |\n` +
           `## Test Case Details\n` +
           details + "\n" +
           `## Code Coverage`
@@ -61,7 +61,7 @@ class MyReporter {
   }
 
   tabs () {
-    return "&nbsp;".repeat(this.indents * 4);
+    return "&nbsp;".repeat(this.indents * 5);
   }
 }
 

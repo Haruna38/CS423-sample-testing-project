@@ -5,11 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "NODE_ENV=test ./node_modules/.bin/c8 ./node_modules/.bin/mocha tests/*.js",
-    "mocha": "NODE_ENV=test ./node_modules/.bin/mocha --config=./config/.mocharc.json tests/*.js > tmp/mocha_output.md",
-    "test-ci-raw": "NODE_ENV=test ./node_modules/.bin/c8 --config ./config/.nycrc.json npm run --silent mocha > tmp/coverage.txt",
+    "mocha": "NODE_ENV=test ./node_modules/.bin/mocha --config=./config/.mocharc.json tests/*.js",
+    "test-ci-raw": "NODE_ENV=test ./node_modules/.bin/c8 --config ./config/.nycrc.json npm run --silent mocha > tmp/coverage.md",
     "test-ci": "mkdir -p tmp && node ./config/report.js",
     "demonstrate": "cd demonstration && ../node_modules/.bin/nyc node",
-    "initialize": "NODE_ENV=test npm install"
+    "initialize": "NODE_ENV=test npm install && cp ./config/nyc_report.js ./node_modules"
   },
   "author": "",
   "license": "ISC",
