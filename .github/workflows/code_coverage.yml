@@ -22,6 +22,6 @@ jobs:
       uses: peter-evans/commit-comment@v3.0.0
       with:
         token: ${{ secrets.PAT }}
-        body-path: './tmp/report.md'
+        body-path: './tmp/coverage.md'
     - name: Finalize check
       run: exit $CODE_COVERAGE_FAILURE_STATUS
