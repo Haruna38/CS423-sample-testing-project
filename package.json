@@ -15,14 +15,14 @@
   "license": "ISC",
   "dependencies": {
     "decimal.js": "^10.4.3",
-    "express": "^4.21.1",
-    "mocha": "^10.8.2",
-    "sinon": "^19.0.2"
+    "express": "^4.21.1"
   },
   "type": "module",
   "devDependencies": {
     "c8": "^10.1.2",
     "chai": "^5.1.2",
-    "nyc": "^17.1.0"
+    "nyc": "^17.1.0",
+    "mocha": "^10.8.2",
+    "sinon": "^19.0.2"
   }
 }
