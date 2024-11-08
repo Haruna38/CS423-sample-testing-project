@@ -55,6 +55,18 @@
 		},
 		"testcases": [
 			{
+				"name": "No operator",
+				"data": {
+					"a": "1",
+					"b": "2",
+					"operator": ""
+				},
+				"expects": {
+					"error": true,
+					"result": "Choose an operator."
+				}
+			},
+			{
 				"name": "Invalid operator",
 				"data": {
 					"a": "1",

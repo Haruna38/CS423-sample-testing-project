@@ -43,6 +43,10 @@ const calculate = function (a, b, operator) {
 			if (b.equals(zero)) throw "Division by zero detected!";
 			result = a.dividedBy(b);
 			break;
+		case "":
+		case null:
+		case undefined:
+			throw "Choose an operator.";
 		default:
 			throw "Invalid operator.";
 	}
