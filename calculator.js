@@ -40,13 +40,13 @@ const calculate = function (a, b, operator) {
 			result = a.times(b);
 			break;
 		case "divide":
-			if (b.equals(zero)) throw "Division by zero detected!";
+			// if (b.equals(zero)) throw "Division by zero detected!";
 			result = a.dividedBy(b);
 			break;
 		case "":
 		case null:
 		case undefined:
-			throw "Choose an operator.";
+			// throw "Choose an operator.";
 		default:
 			throw "Invalid operator.";
 	}
