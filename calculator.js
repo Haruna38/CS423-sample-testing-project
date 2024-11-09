@@ -29,27 +29,27 @@ const calculate = function (a, b, operator) {
 	a = validate(a, "First number");
 	b = validate(b, "Second number");
 	let result;
-	// switch (operator) {
-	// 	case "add":
-	// 		result = a.plus(b);
-	// 		break;
-	// 	case "subtract":
-	// 		result = a.minus(b);
-	// 		break;
-	// 	case "multiply":
-	// 		result = a.times(b);
-	// 		break;
-	// 	case "divide":
-	// 		if (b.equals(zero)) throw "Division by zero detected!";
-	// 		result = a.dividedBy(b);
-	// 		break;
-	// 	case "":
-	// 	case null:
-	// 	case undefined:
-	// 		throw "Choose an operator.";
-	// 	default:
-	// 		throw "Invalid operator.";
-	// }
+	switch (operator) {
+		case "add":
+			result = a.plus(b);
+			break;
+		case "subtract":
+			result = a.minus(b);
+			break;
+		case "multiply":
+			result = a.times(b);
+			break;
+		case "divide":
+			// if (b.equals(zero)) throw "Division by zero detected!";
+			result = a.dividedBy(b);
+			break;
+		case "":
+		case null:
+		case undefined:
+			// throw "Choose an operator.";
+		default:
+			throw "Invalid operator.";
+	}
 
 	if (result.gte(limit)) throw "Result falls outside the allowed range (-10^100, 10^100)";
 
