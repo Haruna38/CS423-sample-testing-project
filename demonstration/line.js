@@ -1,3 +1,5 @@
+// comments, blank lines are brackets don't count
+
 let x = 42;
 
 if (false)
