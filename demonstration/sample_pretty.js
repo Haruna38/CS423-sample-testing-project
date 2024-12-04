@@ -11,7 +11,7 @@ const isNegative = function (x) {
 const isZero = function (x) {
 	if (x > 0) return false;
 	else if (x < 0) return false;
-	else return false;
+	else return true;
 };
 
 const validNumber = function (x) {
@@ -30,18 +30,26 @@ const validNumber = function (x) {
 // branches
 // console.log(isPositive(1));
 // console.log(isPositive(0));
+
 // console.log(isNegative(-1));
 // console.log(isNegative(0));
-// console.log(isZero(0));
-// console.log(isZero(-1));
+
 // console.log(isZero(1));
+// console.log(isZero(-1));
+// console.log(isZero(0));
 
 // statements
 // console.log(isPositive(1));
 // console.log(isPositive(0));
+
 // console.log(isNegative(-1));
 // console.log(isNegative(0));
-// console.log(isZero(0));
-// console.log(isZero(-1));
+
 // console.log(isZero(1));
+// console.log(isZero(-1));
+// console.log(isZero(0));
+
+// console.log(validNumber(NaN));
+
+// NaN ?
 // console.log(validNumber(NaN));
