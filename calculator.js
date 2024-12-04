@@ -36,13 +36,13 @@ const calculate = function (a, b, operator) {
 		case "subtract":
 			result = a.minus(b);
 			break;
-		case "multiply":
-			result = a.times(b);
-			break;
-		case "divide":
-			if (b.equals(zero)) throw "Division by zero detected!";
-			result = a.dividedBy(b);
-			break;
+		// case "multiply":
+		// 	result = a.times(b);
+		// 	break;
+		// case "divide":
+		// 	if (b.equals(zero)) throw "Division by zero detected!";
+		// 	result = a.dividedBy(b);
+		// 	break;
 		case "":
 		case null:
 		case undefined:
